@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soumya Eligibility Tester</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 16px;
+      padding: 12px;
+      background: #eef2ff;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Soumya Eligibility Tester</h1>
+    <label for="marks">Enter marks</label>
+    <input type="number" id="marks" min="0" max="100" placeholder="e.g. 88" />
+    <button onclick="checkScholarship()">Check</button>
+    <div class="result" id="result">Result will appear here</div>
+  </div>
+
+  <script>
+    function checkScholarship() {
+      const marks = Number(document.getElementById('marks').value);
+      let message = 'Please enter a valid mark between 0 and 100.';
+
+      if (marks >= 0 && marks <= 100) {
+        if (marks < 50) {
+          message = 'Not Eligible';
+        } else if (marks <= 69) {
+          message = 'Bronze';
+        } else if (marks <= 84) {
+          message = 'Silver';
+        } else if (marks <= 94) {
+          message = 'Gold';
+        } else {
+          message = 'Platinum';
+        }
+      }
+
+      document.getElementById('result').textContent = message;
+    }
+  </script>
+</body>
+</html>
