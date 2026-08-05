@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATM Palindrome PIN Checker</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+      .card {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        width: 320px;
+      }
+      input,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        box-sizing: border-box;
+      }
+      #result {
+        margin-top: 14px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>ATM PIN Security Check</h2>
+      <label for="pinInput">Enter PIN</label>
+      <input id="pinInput" type="text" placeholder="e.g. 121" />
+      <button id="checkBtn">Verify PIN</button>
+      <div id="result">Result will appear here</div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
