@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Billing Calculator</title>
+    </head>
+    <body>
+
+        <h2>Billing Calculator</h2>
+
+        <form id="billingForm">
+            <label>Customer Name: <input type="text" id="customerName" required></label><br><br>
+            
+            <h3>Add Products</h3>
+            <label>Product Name: <input type="text" id="productName" required></label><br><br>
+            <label>Quantity: <input type="number" id="quantity" required></label><br><br>
+            <label>Price per Item (₹): <input type="number" id="price" step="0.01" required></label><br><br>
+            <button type="button" onclick="addProduct()">Add Product</button>
+            <button type="button" onclick="calculateBill()">Calculate Bill</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </form>
+
+        <div id="productList"></div>
+        <div id="receipt"></div>
+
+        <script>
+            // Using var to store products array
+            var products = [];
+
+            function addProduct() {
+                const productName = document.getElementById("productName").value;
+                let quantity = Number(document.getElementById("quantity").value);
+                let price = Number(document.getElementById("price").value);
+
+                if (!productName || quantity <= 0 || price <= 0) {
+                    alert("Please enter valid product details");
+                    return;
+                }
+
+                // Create product object
+                const product = {
+                    name: productName,
+                    qty: quantity,
+                    unitPrice: price,
+                    subtotal: quantity * price
+                };
+
+                // Add to products array
+                products.push(product);
+
+                // Clear input fields
+                document.getElementById("productName").value = "";
+                document.getElementById("quantity").value = "";
+                document.getElementById("price").value = "";
+
+                // Display products list
+                displayProductsList();
+            }
+
+            function displayProductsList() {
+                if (products.length === 0) {
+                    document.getElementById("productList").innerHTML = "";
+                    return;
+                }
+
+                let productTable = `
+                    <h3>Added Products</h3>
+                    <table border="1" cellpadding="10" style="margin-bottom: 20px;">
+                        <tr style="background-color: #f0f0f0;">
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price (₹)</th>
+                            <th>Subtotal (₹)</th>
+                            <th>Action</th>
+                        </tr>
+                `;
+
+                // Using let for loop variable
+                for (let i = 0; i < products.length; i++) {
+                    const { name, qty, unitPrice, subtotal } = products[i];
+                    productTable += `
+                        <tr>
+                            <td>${name}</td>
+                            <td>${qty}</td>
+                            <td>${unitPrice.toFixed(2)}</td>
+                            <td>${subtotal.toFixed(2)}</td>
+                            <td><button type="button" onclick="removeProduct(${i})">Remove</button></td>
+                        </tr>
+                    `;
+                }
+
+                productTable += `</table>`;
+                document.getElementById("productList").innerHTML = productTable;
+            }
+
+            function removeProduct(index) {
+                products.splice(index, 1);
+                displayProductsList();
+            }
+
+            function calculateBill() {
+                const GST = 0.18;
+                var customerName = document.getElementById("customerName").value;
+
+                if (!customerName) {
+                    alert("Please enter customer name");
+                    return;
+                }
+
+                if (products.length === 0) {
+                    alert("Please add at least one product");
+                    return;
+                }
+
+                // Calculate grand total
+                let grandTotal = 0;
+                for (let i = 0; i < products.length; i++) {
+                    grandTotal += products[i].subtotal;
+                }
+
+                let gstAmount = grandTotal * GST;
+                let finalBill = grandTotal + gstAmount;
+
+                // Create bill object
+                const bill = {
+                    customer: customerName,
+                    grandTotal,
+                    gstAmount,
+                    finalBill
+                };
+
+                // Destructuring with aliasing
+                const {
+                    customer,
+                    grandTotal: total,
+                    gstAmount: gst,
+                    finalBill: amount
+                } = bill;
+
+                // Generate receipt with template literals
+                let receipt = `
+                    <h3>Billing Receipt</h3>
+                    <p><strong>Customer:</strong> ${customer}</p>
+                    <p style="margin-bottom: 20px;"><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+                    
+                    <table border="1" cellpadding="10" style="margin-bottom: 20px;">
+                        <tr style="background-color: #f0f0f0;">
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price (₹)</th>
+                            <th>Subtotal (₹)</th>
+                        </tr>
+                `;
+
+                // Add all products to receipt
+                for (let i = 0; i < products.length; i++) {
+                    const { name, qty, unitPrice, subtotal } = products[i];
+                    receipt += `
+                        <tr>
+                            <td>${name}</td>
+                            <td>${qty}</td>
+                            <td>${unitPrice.toFixed(2)}</td>
+                            <td>${subtotal.toFixed(2)}</td>
+                        </tr>
+                    `;
+                }
+
+                receipt += `</table>`;
+                receipt += `
+                    <p style="font-size: 16px;"><strong>Grand Total:</strong> ₹${total.toFixed(2)}</p>
+                    <p style="font-size: 16px;"><strong>GST Amount (18%):</strong> ₹${gst.toFixed(2)}</p>
+                    <hr>
+                    <p style="font-size: 18px; color: green;"><strong>Final Bill Amount:</strong> ₹${amount.toFixed(2)}</p>
+                `;
+
+                document.getElementById("receipt").innerHTML = receipt;
+            }
+
+            function resetForm() {
+                products = [];
+                document.getElementById("customerName").value = "";
+                document.getElementById("productName").value = "";
+                document.getElementById("quantity").value = "";
+                document.getElementById("price").value = "";
+                document.getElementById("productList").innerHTML = "";
+                document.getElementById("receipt").innerHTML = "";
+            }
+        </script>
+
+    </body>
