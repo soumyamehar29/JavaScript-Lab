@@ -1,0 +1,55 @@
+<!DOCTYPE html
+
+<html>
+    <head>
+        <title> Soumya Mehar </title>
+    </head>
+
+    <body>
+
+    <h1>Soumya Mehar_24070521200</h1>
+
+    <input type="number" id="marks" placeholder="Enter marks">
+
+    <button onclick="checkGrade()">Submit</button>
+
+    <p id="result"></p>
+
+    <script> 
+        function checkGrade()
+        {
+            var marksText = document.getElementById("marks").value.trim();
+
+            if(marksText === "")
+            {
+                document.getElementById("result").innerHTML = "Please enter your marks";
+            }
+            else
+            {
+                var marks = Number(marksText);
+
+                if(marks >= 90)
+                {
+                    document.getElementById("result").innerHTML = "Your grade is A";
+                }
+                else if(marks >= 80)
+                {
+                    document.getElementById("result").innerHTML = "Your grade is B";
+                }
+                else if(marks >= 70)
+                {
+                    document.getElementById("result").innerHTML = "Your grade is C";
+                }
+                else if(marks >= 60)
+                {
+                    document.getElementById("result").innerHTML = "Your grade is D";
+                }
+                else
+                {
+                    document.getElementById("result").innerHTML = "Your grade is F";
+                }
+            }
+        }
+    </script>
+    </body>
+    </html>
