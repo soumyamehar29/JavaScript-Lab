@@ -1,0 +1,156 @@
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5ebdc;
+  color: #4b3a2a;
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  background: #fff8ef;
+  border: 1px solid #e3d1b7;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(75, 58, 42, 0.12);
+}
+
+h1,
+h2 {
+  margin-top: 0;
+  color: #6d4c2f;
+}
+
+.subtitle {
+  margin-top: -8px;
+  margin-bottom: 16px;
+  color: #82624b;
+}
+
+form {
+  display: grid;
+  gap: 8px;
+}
+
+input,
+button {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d4b98d;
+  font-size: 1rem;
+}
+
+button {
+  background: #a97c50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+button:hover {
+  background: #8b6138;
+}
+
+.cart-box {
+  margin-top: 20px;
+}
+
+#cartItems {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.cart-item,
+.empty {
+  background: #f7e6ca;
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item .item-info {
+  display: grid;
+  gap: 4px;
+}
+
+.cart-item .item-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quantity-control button,
+.remove-btn {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #d4b98d;
+  background: #e9d5ba;
+  color: #5c3007;
+  cursor: pointer;
+}
+
+.quantity-control span {
+  min-width: 24px;
+  text-align: center;
+  display: inline-block;
+}
+
+.remove-btn {
+  background: #e9988c;
+  color: white;
+  border: none;
+}
+
+.quantity-control button:hover,
+.remove-btn:hover {
+  background: #d4b98d;
+}
+
+.remove-btn:hover {
+  background: #bd594a;
+}
+
+.summary {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.summary > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e6d6bf;
+}
+
+.final {
+  font-size: 1.05rem;
+  color: #5f3f24;
+}
