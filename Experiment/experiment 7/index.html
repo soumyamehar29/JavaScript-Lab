@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumya's Tasks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">DOM // TASK BOARD</p>
+        <h1>Soumya's Tasks<span class="cursor">_</span></h1>
+      </div>
+      <div class="task-count" aria-live="polite"><span id="task-count">0</span> OPEN</div>
+    </header>
+
+    <section class="task-panel" aria-labelledby="task-heading">
+      <div class="panel-heading">
+        <h2 id="task-heading">Today’s queue</h2>
+        <span class="status-dot" aria-hidden="true"></span>
+      </div>
+
+      <form id="task-form" class="task-form">
+        <label class="sr-only" for="task-input">New task</label>
+        <input id="task-input" name="task" type="text" maxlength="80" placeholder="Type a task and press Enter..." autocomplete="off" required>
+        <button type="submit" class="primary-button">ADD TASK</button>
+      </form>
+
+      <p id="empty-state" class="empty-state">No tasks yet. Add something bright.</p>
+      <ul id="task-list" class="task-list" aria-live="polite"></ul>
+    </section>
+
+    <footer class="app-footer">CLICK A TASK TO EDIT // CLEAR THE BOARD ONE ITEM AT A TIME</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
