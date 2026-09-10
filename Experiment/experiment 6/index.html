@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>String Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">S</span><span>String Lab</span></div>
+      <span class="status"><i></i> Browser-based</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">String functions + regex</p>
+      <h1>Make text<br /><em>useful.</em></h1>
+      <p class="lede">Validate contact details, pull structured data, and understand text at a glance.</p>
+    </section>
+
+    <nav class="tabs" aria-label="String tools">
+      <button class="tab active" data-panel="validate"><span>01</span> Validate email</button>
+      <button class="tab" data-panel="extract"><span>02</span> Extract data</button>
+      <button class="tab" data-panel="analyze"><span>03</span> Analyze text</button>
+    </nav>
+
+    <section class="workspace">
+      <div class="panel active" id="validate">
+        <div class="panel-heading"><div><p class="eyebrow">Regex check</p><h2>Email validation</h2></div><span class="panel-number">01 / 03</span></div>
+        <label for="email-input">Email address</label>
+        <div class="input-row"><input id="email-input" type="email" placeholder="name@domain.com" autocomplete="off" /><button class="primary" id="validate-btn">Check <span>→</span></button></div>
+        <div class="result" id="email-result" aria-live="polite"><span class="result-dot"></span><span>Enter an address to check its format.</span></div>
+        <div class="note"><strong>Pattern</strong><code>^[^\s@]+@[^\s@]+\.[^\s@]+$</code></div>
+      </div>
+
+      <div class="panel" id="extract">
+        <div class="panel-heading"><div><p class="eyebrow">Find matches</p><h2>Extract data</h2></div><span class="panel-number">02 / 03</span></div>
+        <label for="extract-input">Text to scan</label>
+        <textarea id="extract-input" rows="5" placeholder="Paste text containing emails, phone numbers, or URLs..."></textarea>
+        <div class="extract-options">
+          <label class="select-label" for="extract-type">Look for</label>
+          <select id="extract-type"><option value="email">Email addresses</option><option value="url">URLs</option><option value="phone">Phone numbers</option><option value="number">Numbers</option></select>
+          <button class="primary" id="extract-btn">Extract <span>→</span></button>
+        </div>
+        <div class="result-list" id="extract-result" aria-live="polite"><span class="muted">Your matches will appear here.</span></div>
+      </div>
+
+      <div class="panel" id="analyze">
+        <div class="panel-heading"><div><p class="eyebrow">String methods</p><h2>Analyze text</h2></div><span class="panel-number">03 / 03</span></div>
+        <label for="analyze-input">Text sample</label>
+        <textarea id="analyze-input" rows="6" placeholder="Type or paste a paragraph to see its shape..."></textarea>
+        <div class="stats" id="stats" aria-live="polite">
+          <div class="stat"><strong id="char-count">0</strong><span>Characters</span></div><div class="stat"><strong id="word-count">0</strong><span>Words</span></div><div class="stat"><strong id="line-count">0</strong><span>Lines</span></div><div class="stat"><strong id="space-count">0</strong><span>Spaces</span></div>
+        </div>
+        <div class="analysis-line" id="analysis-line">Start typing to analyze your text.</div>
+      </div>
+    </section>
+
+    <footer><span>Three small tools for everyday text work.</span><span class="mono">no data leaves your browser</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
