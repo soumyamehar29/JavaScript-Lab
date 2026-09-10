@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitForge Gym — Admission Form</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <p class="brand">FitForge Gym</p>
+      <h1>Admission Form</h1>
+      <p class="subtitle">Fill in your details. Fields validate as you type.</p>
+    </header>
+
+    <form id="admissionForm" class="form" novalidate>
+      <div class="field">
+        <label for="fullName">Full Name</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          placeholder="e.g. Priya Sharma"
+          autocomplete="name"
+        />
+        <span class="hint" id="fullNameHint" aria-live="polite"></span>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="age">Age</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            placeholder="18–65"
+            min="1"
+            max="120"
+          />
+          <span class="hint" id="ageHint" aria-live="polite"></span>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="10-digit mobile"
+            autocomplete="tel"
+          />
+          <span class="hint" id="phoneHint" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+        <span class="hint" id="emailHint" aria-live="polite"></span>
+      </div>
+
+      <div class="field">
+        <label for="membership">Membership Plan</label>
+        <select id="membership" name="membership">
+          <option value="">Select a plan</option>
+          <option value="monthly">Monthly — ₹1,500</option>
+          <option value="quarterly">Quarterly — ₹4,000</option>
+          <option value="yearly">Yearly — ₹12,000</option>
+        </select>
+        <span class="hint" id="membershipHint" aria-live="polite"></span>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="feesDue">Fees to be Paid (₹)</label>
+          <input
+            type="number"
+            id="feesDue"
+            name="feesDue"
+            placeholder="Auto-filled from plan"
+            min="0"
+            readonly
+          />
+          <span class="hint" id="feesDueHint" aria-live="polite"></span>
+        </div>
+
+        <div class="field">
+          <label for="feesPaid">Fees Paid at Registration (₹)</label>
+          <input
+            type="number"
+            id="feesPaid"
+            name="feesPaid"
+            placeholder="Amount paid now"
+            min="0"
+            step="1"
+          />
+          <span class="hint" id="feesPaidHint" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="emergency">Emergency Contact Name</label>
+        <input
+          type="text"
+          id="emergency"
+          name="emergency"
+          placeholder="Relative or friend"
+        />
+        <span class="hint" id="emergencyHint" aria-live="polite"></span>
+      </div>
+
+      <div class="field">
+        <label for="emergencyPhone">Emergency Contact Number</label>
+        <input
+          type="tel"
+          id="emergencyPhone"
+          name="emergencyPhone"
+          placeholder="10-digit mobile"
+        />
+        <span class="hint" id="emergencyPhoneHint" aria-live="polite"></span>
+      </div>
+
+      <div class="field checkbox-field">
+        <label class="checkbox-label">
+          <input type="checkbox" id="terms" name="terms" />
+          <span>I agree to gym rules and a basic health screening.</span>
+        </label>
+        <span class="hint" id="termsHint" aria-live="polite"></span>
+      </div>
+
+      <div class="actions">
+        <button type="submit" id="submitBtn">Submit Application</button>
+        <button type="reset" id="resetBtn" class="secondary">Reset</button>
+      </div>
+
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
