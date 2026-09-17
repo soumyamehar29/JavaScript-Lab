@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Preferences &amp; Session Storage Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="User preferences home">
+        <span class="brand-mark">09</span>
+        <span>JS LAB / STORAGE</span>
+      </a>
+      <span class="lesson-label">Beginner demo</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">User Preferences &amp; Session Storage Demo</p>
+      <h1 id="page-title">Make this page<br><em>feel like yours.</em></h1>
+      <p class="intro-copy">Practice saving preferences in the browser. Local preferences return with you, while your username belongs only to this tab session.</p>
+    </section>
+
+    <section class="preference-layout" aria-label="User preference controls">
+      <div class="settings-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / Your preferences</p>
+            <h2>Personalize the page</h2>
+          </div>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+
+        <h3>Theme settings</h3>
+        <div class="theme-options" role="radiogroup" aria-label="Choose a theme">
+          <label class="theme-option">
+            <input type="radio" name="theme" value="light">
+            <span class="theme-swatch light-swatch"></span>
+            <span class="option-text"><strong>Light</strong><small>Clear and focused</small></span>
+            <span class="checkmark" aria-hidden="true">&#10003;</span>
+          </label>
+          <label class="theme-option">
+            <input type="radio" name="theme" value="dark">
+            <span class="theme-swatch dark-swatch"></span>
+            <span class="option-text"><strong>Dark</strong><small>Quiet for low light</small></span>
+            <span class="checkmark" aria-hidden="true">&#10003;</span>
+          </label>
+        </div>
+
+        <h3 class="subheading">Font size</h3>
+        <div class="font-options" role="radiogroup" aria-label="Choose a font size">
+          <label class="font-option"><input type="radio" name="font-size" value="small"><span>Small</span></label>
+          <label class="font-option"><input type="radio" name="font-size" value="medium"><span>Medium</span></label>
+          <label class="font-option"><input type="radio" name="font-size" value="large"><span>Large</span></label>
+        </div>
+
+        <div class="control-row">
+          <button class="button button-primary" id="save-preferences" type="button">Save preferences</button>
+          <button class="button button-quiet" id="reset-preferences" type="button">Reset preferences</button>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite">Default preferences loaded.</p>
+
+        <div class="session-section">
+          <p class="eyebrow">02 / Current tab session</p>
+          <h3>Start a session</h3>
+          <form id="session-form" class="session-form">
+            <label for="username">Username</label>
+            <div class="input-row">
+              <input id="username" name="username" type="text" placeholder="Enter your name" autocomplete="name" maxlength="30">
+              <button class="button button-primary" type="submit">Start Session</button>
+            </div>
+          </form>
+          <p class="welcome-message" id="welcome-message" role="status" aria-live="polite">No active session exists.</p>
+          <button class="button button-secondary" id="clear-session" type="button">Clear Session</button>
+        </div>
+      </div>
+
+      <aside class="info-panel" aria-labelledby="storage-title">
+        <p class="eyebrow">03 / Browser storage</p>
+        <h2 id="storage-title">Storage information</h2>
+        <p class="info-copy">localStorage stores data even after the browser is closed, while sessionStorage stores data only for the current browser session/tab.</p>
+        <div class="state-display">
+          <div class="storage-label"><span class="storage-badge local-badge">local</span><span>localStorage</span></div>
+          <p><span class="state-label">Current theme</span><strong id="stored-theme">Light</strong></p>
+          <p><span class="state-label">Current font size</span><strong id="stored-font-size">Medium</strong></p>
+        </div>
+        <div class="storage-display">
+          <div class="storage-label"><span class="storage-badge session-badge">session</span><span>sessionStorage</span></div>
+          <p><span class="state-label">Current username</span><strong id="stored-username">None</strong></p>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer-note">JS LAB 09 <span aria-hidden="true">/</span> WEB STORAGE API</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
