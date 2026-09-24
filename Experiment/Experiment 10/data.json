@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Soumya Mehar",
+    "prn": "24070521200",
+    "branch": "Computer Science",
+    "semester": "6th",
+    "cgpa": "8.72"
+  },
+  {
+    "name": "Aarav Mehta",
+    "prn": "24070521201",
+    "branch": "Information Technology",
+    "semester": "6th",
+    "cgpa": "8.45"
+  },
+  {
+    "name": "Maya Chen",
+    "prn": "24070521202",
+    "branch": "Electronics",
+    "semester": "4th",
+    "cgpa": "8.91"
+  },
+  {
+    "name": "Sofia Rossi",
+    "prn": "24070521203",
+    "branch": "Mechanical Engineering",
+    "semester": "8th",
+    "cgpa": "8.36"
+  }
+]
