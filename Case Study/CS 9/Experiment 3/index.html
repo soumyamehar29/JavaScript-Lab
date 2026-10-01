@@ -1,0 +1,127 @@
+<!DOCTYPE html
+
+<html>
+    <head>
+        <title> Soumya Mehar </title>
+        <style>
+            :root {
+                color-scheme: light;
+                --background: #ffffff;
+                --foreground: #1f2937;
+                --control-background: #f3f4f6;
+                --border: #9ca3af;
+            }
+
+            body[data-theme="dark"] {
+                color-scheme: dark;
+                --background: #111827;
+                --foreground: #f9fafb;
+                --control-background: #374151;
+                --border: #6b7280;
+            }
+
+            body {
+                background: var(--background);
+                color: var(--foreground);
+                font-family: Arial, sans-serif;
+                transition: background-color 180ms ease, color 180ms ease;
+            }
+
+            input,
+            button {
+                background: var(--control-background);
+                color: var(--foreground);
+                border: 1px solid var(--border);
+                padding: 0.5rem 0.75rem;
+            }
+
+            .theme-controls {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .theme-switch {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    <div class="theme-controls">
+        <label class="theme-switch" for="dark-mode">
+            <input type="checkbox" id="dark-mode" role="switch" onchange="setTheme(this.checked ? 'dark' : 'light')">
+            Dark mode
+        </label>
+        <button type="button" onclick="setTheme('default')">Default (Light)</button>
+    </div>
+
+    <h1>Soumya Mehar_24070521200</h1>
+
+    <input type="number" id="marks" placeholder="Enter marks">
+
+    <button onclick="checkGrade()">Submit</button>
+
+    <p id="result"></p>
+
+    <script> 
+        function setTheme(theme)
+        {
+            var isDark = theme === "dark";
+            document.body.dataset.theme = isDark ? "dark" : "light";
+            document.getElementById("dark-mode").checked = isDark;
+
+            if(theme === "default")
+            {
+                localStorage.removeItem("theme");
+            }
+            else
+            {
+                localStorage.setItem("theme", theme);
+            }
+        }
+
+        setTheme(localStorage.getItem("theme") || "default");
+
+        function checkGrade()
+        {
+            var marksText = document.getElementById("marks").value.trim();
+
+            if(marksText === "")
+            {
+                document.getElementById("result").innerHTML = "Please enter your marks";
+            }
+            else
+            {
+                var marks = Number(marksText);
+
+                if(marks >= 90)
+                {
+                    document.getElementById("result").innerHTML = "Your grade is A";
+                }
+                else if(marks >= 80)
+                {
+                    document.getElementById("result").innerHTML = "Your grade is B";
+                }
+                else if(marks >= 70)
+                {
+                    document.getElementById("result").innerHTML = "Your grade is C";
+                }
+                else if(marks >= 60)
+                {
+                    document.getElementById("result").innerHTML = "Your grade is D";
+                }
+                else
+                {
+                    document.getElementById("result").innerHTML = "Your grade is F";
+                }
+            }
+        }
+    </script>
+    </body>
+    </html>
