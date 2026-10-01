@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Experiment 1 | Soumya Mehar</title>
+
+  <!-- Google Font: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      color-scheme: light;
+      --page-bg: #f5f7f4;
+      --surface: #ffffff;
+      --text: #202923;
+      --muted: #5c685f;
+      --accent: #176b52;
+      --border: #d7e0d9;
+      --control-bg: #e8eee9;
+    }
+
+    body[data-theme="dark"] {
+      color-scheme: dark;
+      --page-bg: #171d19;
+      --surface: #222b25;
+      --text: #edf3ee;
+      --muted: #b0beb4;
+      --accent: #8dd8b6;
+      --border: #3b4940;
+      --control-bg: #2a352e;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body[data-theme="system"] {
+        color-scheme: dark;
+        --page-bg: #171d19;
+        --surface: #222b25;
+        --text: #edf3ee;
+        --muted: #b0beb4;
+        --accent: #8dd8b6;
+        --border: #3b4940;
+        --control-bg: #2a352e;
+      }
+    }
+
+    body {
+      background: var(--page-bg);
+      color: var(--text);
+      transition: background-color 180ms ease, color 180ms ease;
+    }
+
+    .hero,
+    .footer {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .section__desc,
+    .meta__label,
+    .console-hint,
+    .footer__line,
+    .footer__copy {
+      color: var(--muted);
+    }
+
+    .card,
+    .skill-card {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    a,
+    code {
+      color: var(--accent);
+    }
+
+    button {
+      color: var(--text);
+    }
+
+    .theme-control {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .theme-control__options {
+      display: inline-flex;
+      padding: 3px;
+      gap: 2px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--control-bg);
+    }
+
+    .theme-control__button {
+      min-height: 32px;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 5px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .theme-control__button[aria-pressed="true"] {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 1px 3px #0002;
+    }
+
+    .theme-control__button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .theme-control {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================
+       HEADER SECTION
+       ====================================================== -->
+  <header class="hero">
+    <div class="hero__glow"></div>
+    <nav class="navbar">
+      <span class="navbar__brand">JS&nbsp;Lab</span>
+      <ul class="navbar__links">
+        <li><a href="#inline">Inline</a></li>
+        <li><a href="#internal">Internal</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#external">External</a></li>
+      </ul>
+      <div class="theme-control" role="group" aria-label="Color theme">
+        <span>Theme</span>
+        <div class="theme-control__options">
+          <button class="theme-control__button" type="button" data-theme-choice="light" aria-pressed="true">Light</button>
+          <button class="theme-control__button" type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+          <button class="theme-control__button" type="button" data-theme-choice="system" aria-pressed="false">Default</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero__content">
+      <span class="eyebrow">Web Technologies &mdash; Practical Record</span>
+      <h1 class="hero__title">JavaScript Experiment 1</h1>
+      <p class="hero__subtitle">Demonstration of Inline, Internal, and External JavaScript</p>
+
+      <div class="hero__meta">
+        <div class="meta__item"><span class="meta__label">Name: </span><span class="meta__value">Soumya Mehar</span></div>
+        <div class="meta__item"><span class="meta__label">PRN: </span><span class="meta__value">24070521200</span></div>
+        <div class="meta__item"><span class="meta__label">Branch: </span><span class="meta__value">CSE</span></div>
+        <div class="meta__item"><span class="meta__label">Year: </span><span class="meta__value">Third Year B.Tech</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======================================================
+         SECTION 1: INLINE JAVASCRIPT
+         The onclick attribute below runs JavaScript directly
+         inside the HTML tag — this is "Inline JavaScript".
+         ====================================================== -->
+    <section id="inline" class="section">
+      <span class="section__tag">01</span>
+      <h2 class="section__title">Inline JavaScript</h2>
+      <p class="section__desc">
+        JavaScript written directly inside an HTML tag's attribute (like <code>onclick</code>),
+        without a &lt;script&gt; block or separate file.
+      </p>
+
+      <div class="card card--glass card--center">
+        <!-- Inline JS: code lives right inside the onclick attribute -->
+        <button
+          class="btn btn--primary"
+          onclick="document.getElementById('inlineOutput').innerText = 'Welcome to JavaScript Laboratory, Soumya Mehar!'; document.getElementById('inlineOutput').classList.add('show');"
+        >
+          Inline JavaScript (Welcome)
+        </button>
+        <p id="inlineOutput" class="output"></p>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         SECTION 2: INTERNAL JAVASCRIPT
+         The function below is defined inside a <script> tag
+         within this same HTML file — this is "Internal JavaScript".
+         ====================================================== -->
+    <section id="internal" class="section">
+      <span class="section__tag">02</span>
+      <h2 class="section__title">Internal JavaScript</h2>
+      <p class="section__desc">
+        JavaScript written within a &lt;script&gt; tag inside the HTML document itself.
+      </p>
+
+      <div class="card card--glass card--center">
+        <button class="btn btn--primary" onclick="showStudentInfo()">
+          Internal JavaScript (Student Information)
+        </button>
+        <div id="internalOutput" class="output output--info"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         SECTION 3: ABOUT ME
+         ====================================================== -->
+    <section id="about" class="section">
+      <span class="section__tag">03</span>
+      <h2 class="section__title">About Me</h2>
+
+      <div class="card card--glass card--about">
+        <div class="about__avatar">SM</div>
+        <div class="about__text">
+          <p>
+            Hello! I am <strong>Soumya Mehar</strong>, a Computer Science Engineering student at
+            Symbiosis Institute of Technology, Nagpur. I am passionate about technology, software development, AI/ML
+            and continuously learning new skills.
+          </p>
+          <p>
+            I have a keen interest in Web Development, JavaScript, Flutter App Development, Artificial Intelligence,
+            Database Management Systems, UI/UX Design, and Software Engineering.
+          </p>
+          <p>
+            I enjoy solving real-world problems by building responsive websites, intelligent applications, and
+            automation solutions. I am always eager to learn modern technologies and improve my programming,
+            communication, and problem-solving skills.
+          </p>
+          <p>
+            My career goal is to become a successful Software Engineer and contribute to innovative technology
+            that creates a positive impact on society.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         SECTION 4: SKILLS
+         ====================================================== -->
+    <section id="skills" class="section">
+      <span class="section__tag">04</span>
+      <h2 class="section__title">Skills</h2>
+
+      <div class="skills__grid">
+        <div class="skill-card"><span class="skill-card__icon">🧱</span><span>HTML5</span></div>
+        <div class="skill-card"><span class="skill-card__icon">🎨</span><span>CSS3</span></div>
+        <div class="skill-card"><span class="skill-card__icon">⚡</span><span>JavaScript</span></div>
+        <div class="skill-card"><span class="skill-card__icon">🖥️</span><span>C Programming</span></div>
+        <div class="skill-card"><span class="skill-card__icon">🐍</span><span>Python</span></div>
+        <div class="skill-card"><span class="skill-card__icon">📱</span><span>Flutter</span></div>
+        <div class="skill-card"><span class="skill-card__icon">🗄️</span><span>SQL</span></div>
+        <div class="skill-card"><span class="skill-card__icon">🔧</span><span>Git &amp; GitHub</span></div>
+        <div class="skill-card"><span class="skill-card__icon">🧩</span><span>Problem Solving</span></div>
+        <div class="skill-card"><span class="skill-card__icon">🤝</span><span>Teamwork</span></div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         SECTION 5: EXTERNAL JAVASCRIPT
+         Logic lives entirely in script.js, linked below.
+         ====================================================== -->
+    <section id="external" class="section">
+      <span class="section__tag">05</span>
+      <h2 class="section__title">External JavaScript</h2>
+      <p class="section__desc">
+        JavaScript written in a separate <code>script.js</code> file and linked to this page with a
+        &lt;script src="script.js"&gt; tag.
+      </p>
+
+      <div class="card card--glass card--center">
+        <button class="btn btn--primary" id="externalBtn">
+          Run External JavaScript
+        </button>
+        <p class="console-hint">Open Browser Console to view External JavaScript Output.</p>
+        <div id="externalOutput" class="output output--info"></div>
+        <p id="dateTimeOutput" class="datetime"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+  <footer class="footer">
+    <p class="footer__line">Created by <strong>Soumya Mehar</strong></p>
+    <p class="footer__line">PRN: 24070521200</p>
+    <p class="footer__line">Symbiosis Institute of Technology, Nagpur</p>
+    <p class="footer__copy">&copy; 2026 All Rights Reserved</p>
+  </footer>
+
+  <!-- ======================================================
+       INTERNAL JAVASCRIPT
+       This <script> block lives inside index.html, so any
+       function defined here counts as "Internal JavaScript".
+       ====================================================== -->
+  <script>
+    const themeButtons = document.querySelectorAll('[data-theme-choice]');
+
+    function setTheme(theme) {
+      document.body.dataset.theme = theme;
+      themeButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme));
+      });
+      try {
+        localStorage.setItem('page-theme', theme);
+      } catch {
+        // The theme still works for this visit when storage is unavailable.
+      }
+    }
+
+    themeButtons.forEach((button) => {
+      button.addEventListener('click', () => setTheme(button.dataset.themeChoice));
+    });
+
+    try {
+      const savedTheme = localStorage.getItem('page-theme');
+      if (['light', 'dark', 'system'].includes(savedTheme)) setTheme(savedTheme);
+    } catch {
+      document.body.dataset.theme = 'light';
+    }
+
+    // Internal JavaScript: displays the student's information
+    function showStudentInfo() {
+      const info = `
+        <strong>Name:</strong> Soumya Mehar<br>
+        <strong>PRN:</strong> 24070521200<br>
+        <strong>Branch:</strong> Computer Science Engineering<br>
+        <strong>Year:</strong> Third Year B.Tech<br>
+        <strong>College:</strong> Symbiosis Institute of Technology, Nagpur
+      `;
+      const output = document.getElementById('internalOutput');
+      output.innerHTML = info;
+      output.classList.add('show');
+    }
+  </script>
+
+  <!-- External JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
