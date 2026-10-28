@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f0e7" />
+    <title>Daybook — Class scheduler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Daybook home">
+          <span class="brand-mark" aria-hidden="true">d.</span>
+          <span>daybook</span>
+        </a>
+        <div class="topbar-date">
+          <span class="date-dot" aria-hidden="true"></span>
+          <span id="today-label">Your day, thoughtfully planned</span>
+        </div>
+        <button class="button button-dark top-add" id="add-class-button" type="button">
+          <span aria-hidden="true">＋</span> Add a class
+        </button>
+      </header>
+
+      <main>
+        <section class="intro">
+          <div>
+            <p class="eyebrow">YOUR PERSONAL CLASS PLANNER</p>
+            <h1>A little structure<br />goes a <em>long way.</em></h1>
+          </div>
+          <p class="intro-note">
+            Make room for what matters.<br />
+            One class, one moment at a time.
+          </p>
+        </section>
+
+        <section class="dashboard" aria-label="Class schedule dashboard">
+          <article class="countdown-card">
+            <div class="countdown-top">
+              <span class="card-eyebrow"><span class="live-dot"></span> UP NEXT</span>
+              <span class="today-chip" id="class-date-chip">TODAY</span>
+            </div>
+            <div class="countdown-content">
+              <div class="next-class">
+                <p class="next-subject" id="next-subject">Your next class</p>
+                <h2 id="next-title">A clear mind starts here.</h2>
+                <p class="next-meta" id="next-meta">Add a class to get started</p>
+              </div>
+              <div class="timer-block" aria-live="polite">
+                <p class="timer-caption" id="timer-caption">TIME UNTIL CLASS</p>
+                <div class="timer" id="countdown" aria-label="Time until next class">
+                  <span class="timer-part"><strong>00</strong><small>hrs</small></span>
+                  <span class="timer-separator">:</span>
+                  <span class="timer-part"><strong>00</strong><small>min</small></span>
+                  <span class="timer-separator">:</span>
+                  <span class="timer-part"><strong>00</strong><small>sec</small></span>
+                </div>
+              </div>
+            </div>
+            <div class="countdown-footer">
+              <span class="sun-icon" aria-hidden="true">✳</span>
+              <p id="countdown-note">Take a breath. You’re right on time.</p>
+              <span class="footer-line"></span>
+            </div>
+            <span class="card-decoration" aria-hidden="true">d.</span>
+          </article>
+
+          <aside class="quote-card">
+            <div class="quote-icon" aria-hidden="true">“</div>
+            <p class="quote-text">The secret of getting ahead is getting started.</p>
+            <div class="quote-attribution"><span></span> MARK TWAIN</div>
+            <div class="quote-decoration" aria-hidden="true">✳</div>
+          </aside>
+        </section>
+
+        <section class="schedule-section" aria-labelledby="schedule-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" id="schedule-eyebrow">MAKE TODAY COUNT</p>
+              <h2 id="schedule-heading">Your schedule <span id="schedule-count">(0)</span></h2>
+            </div>
+            <div class="schedule-date">
+                <button class="day-step" id="previous-day-button" type="button" aria-label="Show previous day">‹</button>
+                <span class="calendar-icon" aria-hidden="true">▦</span>
+                <span id="schedule-date-label">Today</span>
+                <button class="day-step" id="next-day-button" type="button" aria-label="Show next day">›</button>
+              </div>
+          </div>
+          <div class="schedule-list" id="schedule-list" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <span class="empty-icon" aria-hidden="true">☼</span>
+            <h3>A little room in your day.</h3>
+            <p>Your schedule is clear. Add a class whenever you’re ready.</p>
+            <button class="button button-outline" id="empty-add-button" type="button">Add your first class</button>
+          </div>
+          <div class="schedule-bottom">
+            <span id="schedule-footer-label">SHOWING TODAY’S CLASSES</span>
+            <span class="bottom-sparkle" aria-hidden="true">✳</span>
+          </div>
+        </section>
+      </main>
+
+      <footer class="page-footer">
+        <span>DAYBOOK <span aria-hidden="true">·</span> MADE FOR YOUR EVERYDAY</span>
+        <span id="footer-clock">Your local time</span>
+      </footer>
+    </div>
+
+    <dialog class="class-dialog" id="class-dialog" aria-labelledby="dialog-heading">
+      <form id="class-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">MAKE A LITTLE SPACE</p>
+            <h2 id="dialog-heading">Add a class</h2>
+          </div>
+          <button class="close-button" id="close-dialog-button" type="button" aria-label="Close dialog">×</button>
+        </div>
+        <label>
+          Class name
+          <input name="title" type="text" placeholder="e.g. Modern literature" maxlength="60" required />
+        </label>
+        <label>
+          Subject or instructor
+          <input name="subject" type="text" placeholder="e.g. English · Prof. Rivera" maxlength="60" required />
+        </label>
+        <div class="form-row">
+          <label>
+            Date
+            <input name="date" type="date" required />
+          </label>
+          <label>
+            Start time
+            <input name="time" type="time" required />
+          </label>
+        </div>
+        <label>
+          Location <span class="optional-label">OPTIONAL</span>
+          <input name="location" type="text" placeholder="e.g. Room 204" maxlength="50" />
+        </label>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button class="button button-dark submit-button" type="submit">Save class <span aria-hidden="true">→</span></button>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
